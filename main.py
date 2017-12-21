@@ -20,7 +20,11 @@ def FreqDict_to_Dict(txt_freq):
 def get_freq_from_file(path):
 	with open(path,'r',encoding = 'UTF-8') as f:
 		demo = f.readlines()
+		for line in demo:
+			if ishan(line):
+				demo.remove(line)
 		demo = join_list(demo)
+		print(demo)
 		txt_spited = jieba.lcut(demo,cut_all=False)
 		tags = jieba.analyse.extract_tags(demo,topK = 10)
 		txt_freq = nltk.FreqDist(txt_spited)
